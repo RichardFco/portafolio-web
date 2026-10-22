@@ -365,23 +365,40 @@ body {
   font-size: 0.9rem;
 }
 
+/* Ajustes para el Menú Móvil */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 2.3rem; }
-  .nav-toggle { display: block; }
+  /* Contenedor del menú desplegable */
   .nav-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 60px; /* Altura de tu header */
     left: 0;
     width: 100%;
-    background-color: var(--bg-main);
-    border-bottom: 1px solid var(--border-color);
-    padding: 16px 0;
-  }
-  .nav-menu.active { display: block; }
-  .nav-menu ul {
+    background: rgba(248, 250, 252, 0.95); /* Fondo sólido claro con ligero glassmorphism */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegura que quede siempre sobre el contenido del Hero */
+
+    /* Transición suave para abrir/cerrar */
+    display: none; /* Se activa con JS agregando la clase .active */
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0;
   }
 }
 
