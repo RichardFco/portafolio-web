@@ -20,7 +20,7 @@
   --max-width: 1100px;
 }
 
-/* RESET CORREGIDO (Asterisco obligatorio) */
+/* RESET CORREGIDO */
 * {
   margin: 0;
   padding: 0;
@@ -126,7 +126,7 @@ body {
 .header {
   position: sticky;
   top: 0;
-  background-color: rgba(248, 250, 252, 0.75);
+  background-color: rgba(248, 250, 252, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
@@ -308,6 +308,40 @@ body {
   font-weight: 700;
 }
 
+.timeline-content {
+  margin-top: 12px;
+}
+
+.timeline-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.timeline-content li {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.timeline-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.timeline-tags span {
+  background: rgba(30, 58, 138, 0.08);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(30, 58, 138, 0.15);
+}
+
 /* Botones Social */
 .social-links {
   display: flex;
@@ -365,76 +399,50 @@ body {
   font-size: 0.9rem;
 }
 
-/* Ajustes para el Menú Móvil */
+/* ==========================================================================
+   AJUSTES PARA MENÚ MÓVIL (CORREGIDO)
+   ========================================================================== */
 @media (max-width: 768px) {
-  /* Contenedor del menú desplegable */
-  .nav-menu {
-    position: fixed;
-    top: 60px; /* Altura de tu header */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* El menú desplegable */
+  header .nav-menu {
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(248, 250, 252, 0.95); /* Fondo sólido claro con ligero glassmorphism */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem 0;
-    gap: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    z-index: 1000; /* Asegura que quede siempre sobre el contenido del Hero */
-
-    /* Transición suave para abrir/cerrar */
-    display: none; /* Se activa con JS agregando la clase .active */
-    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    background-color: #f8fafc !important; /* Fondo 100% sólido */
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.15) !important;
+    border-bottom: 1px solid var(--border-color);
+    padding: 24px 0;
+    display: none;
+    z-index: 99999;
   }
 
-  .nav-menu.active {
-    display: flex;
+  header .nav-menu.active {
+    display: block !important;
   }
 
-  .nav-menu a {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: #1e293b;
+  /* Estructura vertical de los elementos del menú */
+  header .nav-menu ul {
+    flex-direction: column !important;
+    gap: 16px !important;
+    width: 100%;
+    padding: 0 24px;
+  }
+
+  header .nav-menu li {
     width: 100%;
     text-align: center;
-    padding: 0.5rem 0;
   }
-}
 
-/* ==========================================================================
-   ESTILOS SINTETIZADOS DE TRAYECTORIA
-   ========================================================================== */
-.timeline-content {
-  margin-top: 12px;
-}
-
-.timeline-content ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin-bottom: 16px;
-}
-
-.timeline-content li {
-  font-size: 0.95rem;
-  color: var(--text-main);
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-
-.timeline-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.timeline-tags span {
-  background: rgba(30, 58, 138, 0.08);
-  color: var(--primary);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: 1px solid rgba(30, 58, 138, 0.15);
+  header .nav-menu a {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    display: block;
+    padding: 10px 0;
+  }
 }
