@@ -1,0 +1,27 @@
+name: CI Static Analysis & Linter
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    name: Lint HTML & CSS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar HTMLHint
+        run: npm install -g htmlhint
+
+      - name: Ejecutar verificación de sintaxis HTML
+        run: htmlhint "**/*.html"
